@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid #2b6cb0;
+    /* brand */
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white/90 p-5;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-dark disabled:opacity-60;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-slate-50;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm placeholder:text-slate-400 focus:border-brand focus:outline-none;
+  }
+
+  .th {
+    @apply px-4 py-2.5 text-left text-xs font-semibold text-slate-500;
+  }
+
+  .td {
+    @apply px-4 py-3 text-sm;
+  }
+}
+
+/* College logo as a faint watermark behind every page. Needs public/logo.png. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url("/logo.png") center / min(70vmin, 560px) no-repeat;
+  opacity: 0.1;
+}
+
+@media (min-width: 768px) {
+
+  /* centre it in the area beside the sidebar */
+  body::before {
+    background-position: calc(50% + 7.5rem) center;
+  }
+}
+
+@media print {
+  body::before {
+    display: none;
+  }
+}
