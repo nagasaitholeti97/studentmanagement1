@@ -1,0 +1,3 @@
+
+ALTER TABLE students
+ADD COLUMN state VARCHAR(255);

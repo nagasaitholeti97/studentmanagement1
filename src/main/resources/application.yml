@@ -1,0 +1,37 @@
+
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/sams_db}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:Harshi@2903}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+
+app:
+  registration:
+    faculty-code: ${FACULTY_REGISTRATION_CODE:SAMS-FACULTY-2026}
+
+  jwt:
+    secret: ${JWT_SECRET:change-this-development-secret-to-at-least-32-bytes-long}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+
+  otp:
+    secret: ${OTP_HASH_SECRET:change-this-otp-hash-secret-to-at-least-32-bytes-long}
+    expiration-minutes: 5
+    max-attempts: 5
+    resend-cooldown-seconds: 30
+    rate-limit-window-minutes: 15
+    max-requests-per-window: 5
+
+  frontend-url: ${FRONTEND_URL:http://localhost:5173}
+
+  mail:
+    from: ${SENDGRID_FROM_EMAIL:no-reply@example.com}
+    api-key: ${SENDGRID_API_KEY:}
